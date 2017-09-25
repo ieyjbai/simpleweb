@@ -54,7 +54,9 @@ public class HelloServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String	name = request.getParameter("name");
-		name = new String(name.getBytes("iso8859-1"), "utf-8");
+		if(name != null){
+			name = new String(name.getBytes("iso8859-1"), "utf-8");
+		}
 		
 		request.setAttribute("name", name);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
